@@ -19,5 +19,7 @@ from django.conf.urls import url,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('booktest/',include('booktest.urls'))
+
+    #空的匹配优先级最高，将空的放在最下面
+    url('',include('booktest.urls',namespace='booktest'))
 ]

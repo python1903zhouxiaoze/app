@@ -8,10 +8,13 @@
 <h2>列表页</h2>
 <!--<h3>{{books}}</h3>-->
 <ul>
-    {%for book in books%}
-    <li><a href="/booktest/detail/{{book.id}}/">{{book.title}}</a></li>
-    {%endfor%}
+    {%if books%}
+        {%for book in books%}
+<!--            <li><a href="/detail/{{book.id}}/">{{book.title}}</a></li>-->
+            <li><a href="{% url 'booktest:detail' book.id %}">{{book.title}}</a></li>
+        {%endfor%}
+    {%endif%}
 </ul>
-<a href="/booktest/index/">点击返回首页</a>
+<a href="{% url 'booktest:index' %}">点击返回首页</a>
 </body>
 </html>

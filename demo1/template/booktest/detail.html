@@ -10,11 +10,21 @@
 {{book}}
 <h2>角色：</h2>
 <ul>
-    {%for hero in book.heroinfo_set.all%}
-    <li>{{hero.name}}</li>
-    {%endfor%}
+    {%if book%}
+        {%for hero in book.heroinfo_set.all%}
+            {%if forloop.counter == 1%}
+                <li style="background-color:red">{{forloop.counter}}--->{{hero.name}}</li>
+            {%else%}
+                <li>{{forloop.counter}}--->{{hero.name}}</li>
+            {%endif%}
+        {%empty%}
+            没有英雄信息
+        {%endfor%}
+    {%else%}
+        没有书本信息
+    {%endif%}
 </ul>
-<a href="/booktest/list/">点击返回列表页</a>
+<a href="{% url 'booktest:list' %}">点击返回列表页</a>
 
 </body>
 </html>
