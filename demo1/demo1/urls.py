@@ -21,5 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     #空的匹配优先级最高，将空的放在最下面
-    url('',include('booktest.urls',namespace='booktest'))
+    url('',include('booktest.urls',namespace='booktest')),
+
+    #删除英雄
 ]

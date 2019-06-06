@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 
 
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.template import loader
 from .admin import BookInfo,HeroInfo
 
@@ -29,3 +29,28 @@ def detail(req,id):
     # res = temp.render({'book':book})
     # return HttpResponse(res)
     return render(req,'booktest/detail.html',{'book':book})
+
+
+def deletehero(req,id):
+    hero=HeroInfo.objects.get(pk=id)
+    hero.delete()
+    return HttpResponseRedirect('/detail/%s/'%(hero.book.id,))
+
+def deletebook(req,id):
+    book=BookInfo.objects.get(pk=id)
+    book.delete()
+    return HttpResponseRedirect('/list/')
+
+
+#添加英雄
+def addhero(req,id):
+    book=BookInfo.objects.get(pk=id)
+    if req.method=='GET':
+        return render(req,'booktest/addhero.html',{'book':book})
+    elif req.method=='POST':
+        hero=HeroInfo()
+        hero.name=req.POST.get('heroname')
+        hero.content=req.POST.get('herocontent')
+        hero.book=book
+        hero.save()
+        return HttpResponseRedirect('/detail/%s/'%(id,))

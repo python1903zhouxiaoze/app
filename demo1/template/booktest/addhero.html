@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>addhero</title>
+</head>
+<body>
+<h2>{{book.title}}</h2>
+
+<form action="{% url 'booktest:addhero' book.id %}" method="post">
+    英雄名：<input type="text" name="heroname"><br>
+    技能：<input type="text" name="herocontent"><br><br>
+    <input type="submit" value="提交"><br><br>
+</form>
+</body>
+</html>
