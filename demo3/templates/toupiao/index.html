@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+<div class="container">
+    <h2>首页</h2>
+    <h3>问题详情</h3>
+    {% for question in questions %}
+        <ul>
+            <li>{{forloop.counter}}&nbsp&nbsp<a href="{% url 'toupiao:list' question.id %}">{{question.title}}</a></li>
+        </ul>
+    {% endfor %}
+</div>
+</body>
+</html>
