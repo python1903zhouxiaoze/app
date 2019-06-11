@@ -17,7 +17,14 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url,include
 
+from django.views import static
+from django.conf import settings
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('',include('toupiao.urls',namespace='toupiao'))
+    url('',include('toupiao.urls',namespace='toupiao')),
+
+
+    url(r'^static/(?P<path>.*)$', static.serve,
+    {'document_root': settings.STATIC_ROOT}, name='static'),
 ]

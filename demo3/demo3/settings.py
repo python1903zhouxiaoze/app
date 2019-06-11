@@ -26,6 +26,7 @@ SECRET_KEY = '8idv8e_&o00)wqetx*^!!5v1uf9^o#^^()6runc$*3%)guv@6n'
 # DEBUG = True
 #CommandError: You must set settings.ALLOWED_HOSTS if DEBUG is False.
 
+# DEBUG=True
 DEBUG=False
 ALLOWED_HOSTS=['*']
 
@@ -122,5 +123,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+
+#将debug设置成false静态文件会出错
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS=[os.path.join(BASE_DIR,'static')]
+
+
 STATIC_URL = '/static/'
-STATICFILES_DIRS=[os.path.join(BASE_DIR,'static')]
+STATIC_ROOT='static'
+STATICFILES_DIRS=[os.path.join(BASE_DIR,'/static/')]
+
+
+
