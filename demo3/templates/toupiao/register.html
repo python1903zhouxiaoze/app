@@ -1,0 +1,28 @@
+
+
+
+
+{% extends 'toupiao/base.html' %}
+{% block link %}
+<link rel="stylesheet" href="/static/main.css">
+
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+    <h2>欢迎来到注册界面</h2>
+    <form action="{% url 'toupiao:register' %}" method="post">
+        {% csrf_token %}
+        {{rf}}
+        <br><br><br><br><br>
+        <input type="submit" value="提交">
+    </form>
+    <a href="{% url 'toupiao:login' %}"><h2>返回登录界面</h2></a>
+    <br>
+    <br>
+    <br>
+</div>
+
+
+{% endblock %}

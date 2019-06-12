@@ -11,6 +11,7 @@
     {{question}}
     <h2>请选择</h2>
     <form action="{% url 'toupiao:list' question.id %}" method="post">
+        {% csrf_token %}
         <ul>
         {% for choice in question.choice_set.all %}
             {% if forloop.counter == 1 %}

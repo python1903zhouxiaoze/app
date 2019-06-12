@@ -1,13 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>首页</title>
-    <link rel="stylesheet" href="/static/main.css">
-</head>
-<body>
+{% extends 'toupiao/base.html' %}
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>首页</title>-->
+<!--    <link rel="stylesheet" href="/static/main.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <h2>首页</h2>-->
+
+
+<!--&lt;!&ndash;    <h2>首首页</h2>&ndash;&gt;-->
+<!--    {# 单行注释以及多行注释 #}-->
+<!--    {# <h2>首首首页</h2> #}-->
+<!--    {% comment %}-->
+<!--    我-->
+<!--    我-->
+<!--    我-->
+<!--    我-->
+<!--    我-->
+<!--    {% endcomment %}-->
+
+<!--    <h3>问题详情</h3>-->
+<!--    {% for question in questions %}-->
+<!--        <ul>-->
+<!--            <li>{{forloop.counter}}&nbsp&nbsp<a href="{% url 'toupiao:list' question.id %}">{{question.title}}</a></li>-->
+<!--        </ul>-->
+<!--    {% endfor %}-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--{# 继承父模板 #}-->
+
+{% block title %}首页{% endblock %}
+{% block link %}<link rel="stylesheet" href="/static/main.css">{% endblock %}
+{% block body %}
 <div class="container">
     <h2>首页</h2>
+    <h2>用户{{user}}----<a href="{% url 'toupiao:logout' %}">退出</a></h2>
+
+
+<!--    <h2>首首页</h2>-->
+    {# 单行注释以及多行注释 #}
+    {# <h2>首首首页</h2> #}
+    {% comment %}
+    我
+    我
+    我
+    我
+    我
+    {% endcomment %}
+
     <h3>问题详情</h3>
     {% for question in questions %}
         <ul>
@@ -15,5 +62,4 @@
         </ul>
     {% endfor %}
 </div>
-</body>
-</html>
+{% endblock %}
