@@ -34,7 +34,7 @@
 <!--</html>-->
 
 
-<!--{# 继承父模板 #}-->
+
 
 {% block title %}首页{% endblock %}
 {% block link %}<link rel="stylesheet" href="/static/main.css">{% endblock %}
@@ -42,19 +42,6 @@
 <div class="container">
     <h2>首页</h2>
     <h2>用户{{user}}----<a href="{% url 'toupiao:logout' %}">退出</a></h2>
-
-
-<!--    <h2>首首页</h2>-->
-    {# 单行注释以及多行注释 #}
-    {# <h2>首首首页</h2> #}
-    {% comment %}
-    我
-    我
-    我
-    我
-    我
-    {% endcomment %}
-
     <h3>问题详情</h3>
     {% for question in questions %}
         <ul>

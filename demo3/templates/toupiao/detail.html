@@ -1,12 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="/static/main.css">
+{% extends 'toupiao/base.html' %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--    <link rel="stylesheet" href="/static/main.css">-->
 
-</head>
-<body>
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <h2>投票结果</h2>-->
+<!--    <h2>问题</h2>-->
+<!--    {{question}}-->
+<!--    <h2>票数</h2>-->
+<!--    {% for choice in question.choice_set.all %}-->
+<!--        <ul>-->
+<!--            <li>{{choice.title}}-&ndash;&gt;{{choice.number}}</li>-->
+<!--        </ul>-->
+<!--    {% endfor %}-->
+<!--    <a href="{% url 'toupiao:index' %}">返回首页</a>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+{% block title %}首页{% endblock %}
+{% block link %}<link rel="stylesheet" href="/static/main.css">{% endblock %}
+{% block body %}
+
+{% block body %}
 <div class="container">
     <h2>投票结果</h2>
     <h2>问题</h2>
@@ -19,5 +40,4 @@
     {% endfor %}
     <a href="{% url 'toupiao:index' %}">返回首页</a>
 </div>
-</body>
-</html>
+{% endblock %}

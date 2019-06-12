@@ -1,11 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>list</title>
-    <link rel="stylesheet" href="/static/main.css">
-</head>
-<body>
+{% extends 'toupiao/base.html' %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>list</title>-->
+<!--    <link rel="stylesheet" href="/static/main.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <h2>问题</h2>-->
+<!--    {{question}}-->
+<!--    <h2>请选择</h2>-->
+<!--    <form action="{% url 'toupiao:list' question.id %}" method="post">-->
+<!--        {% csrf_token %}-->
+<!--        <ul>-->
+<!--        {% for choice in question.choice_set.all %}-->
+<!--            {% if forloop.counter == 1 %}-->
+<!--                <li><input type="radio" checked name="f" value="{{choice.id}}">{{choice.title}}</li>-->
+<!--            {% else %}-->
+<!--                <li><input type="radio" name="f" value="{{choice.id}}">{{choice.title}}</li>-->
+<!--            {% endif %}-->
+<!--        {% endfor %}-->
+<!--        </ul>-->
+<!--        <input type="submit" value="提交">-->
+<!--    </form>-->
+
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+{% block title %}首页{% endblock %}
+{% block link %}<link rel="stylesheet" href="/static/main.css">{% endblock %}
+{% block body %}
 <div class="container">
     <h2>问题</h2>
     {{question}}
@@ -23,7 +50,6 @@
         </ul>
         <input type="submit" value="提交">
     </form>
+</div>>
+{% endblock %}
 
-</div>
-</body>
-</html>
