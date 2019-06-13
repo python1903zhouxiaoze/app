@@ -28,6 +28,7 @@ class SingleView(View):
         # content=req.POST.get('content')
 
         cf=CommentForm(req.POST)
+        print(cf)
         if cf.is_valid():
             res=cf.save(commit=False)
             res.article=get_object_or_404(Article,pk=id)
