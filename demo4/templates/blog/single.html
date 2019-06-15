@@ -1,9 +1,11 @@
 {% extends 'blog/base.html' %}
 
+{% load my_fun %}
+
 {% block left %}
     <article class="post post-{{article.id}}">
         <header class="entry-header">
-            <h1 class="entry-title"></h1>
+            <h1 class="entry-title">{{article.title}} : 前言</h1>
             <div class="entry-meta">
                 <span class="post-category"><a href="#">{{article.title}}</a></span>
                 <span class="post-date"><a href="#"><time class="entry-date"
@@ -14,7 +16,7 @@
             </div>
         </header>
         <div class="entry-content clearfix">
-            <p>{{article.body}}</p>
+            <p>{{article.body|safe}}</p>
         </div>
     </article>
     <section class="comment-area" id="comment-area">
@@ -63,27 +65,39 @@
 {% block right %}
     <div class="widget widget-content">
         <h3 class="widget-title">文章目录</h3>
-        <ul>
-            <li>
-                <a href="#">教程特点</a>
-            </li>
-            <li>
-                <a href="#">谁适合这个教程</a>
-            </li>
-            <li>
-                <a href="#">在线预览</a>
-            </li>
-            <li>
-                <a href="#">资源列表</a>
-            </li>
-            <li>
-                <a href="#">获取帮助</a>
-            </li>
-        </ul>
+        {# 在这里autoescapeoff也行，safe也行 #}
+        {% autoescape off %}
+        {{article.toc}}
+        {% endautoescape %}
+<!--        {{article.toc|safe}}-->
+<!--        <ul>-->
+<!--            <li>-->
+<!--                <a href="#">教程特点</a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a href="#">谁适合这个教程</a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a href="#">在线预览</a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a href="#">资源列表</a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a href="#">获取帮助</a>-->
+<!--            </li>-->
+<!--        </ul>-->
     </div>
 {% endblock %}
 
-
+{% block article %}
+    {% mytags as articles %}
+    {% for article in articles %}
+        <li>
+            <a href="{% url 'blog:single' article.id %}">{{article.title}}：前言</a>
+        </li>
+    {% endfor %}
+{% endblock %}
 
 <!--<!DOCTYPE html>-->
 <!--<html>-->
