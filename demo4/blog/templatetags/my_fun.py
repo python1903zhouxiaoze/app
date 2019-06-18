@@ -6,7 +6,7 @@
 from django.template import Library
 
 #引入Article类
-from ..models import Article,Category,Tag
+from ..models import Article,Category,Tag,Ads
 
 #注册，不加括号会报错 type object 'Library' has no attribute 'tags'
 register=Library()
@@ -30,3 +30,9 @@ def getcategorys():
 @register.simple_tag
 def gettags():
     return Tag.objects.all()
+
+
+#轮播图
+@register.simple_tag
+def getads():
+    return Ads.objects.all()

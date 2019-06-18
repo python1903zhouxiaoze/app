@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>检索</title>
+</head>
+<body>
+<h1>检索字段：{{query}}</h1>
+<h1>检索结果：</h1>
+{% for a in page.object_list %}
+    <ul>
+        <li><a href="{% url 'blog:single' a.object.id %}">{{a.object.title}}</a></li>
+    </ul>
+{% endfor %}
+<h2><a href="{% url 'blog:index' %}">返回首页</a></h2>
+</body>
+</html>

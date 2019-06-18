@@ -64,6 +64,18 @@ class IndexView(View):
         return render(req,'blog/index.html',{'page':page})
 
 
+# #这里注意使用视图类效果出不来，使用视图函数
+# from django.views.decorators.cache import cache_page
+# #使用这个装饰器对首页进行缓存
+# @cache_page(60*5)
+# def index(req):
+#     articles = Article.objects.get_queryset().order_by('id')
+#     luyou = Luyou()
+#     page = luyou.aaa(req, articles)
+#     page.path = reverse('blog:index')
+#     return render(req, 'blog/index.html', {'page': page})
+
+
 
 class SingleView(View):
     def get(self,req,id):
@@ -95,6 +107,7 @@ class SingleView(View):
             res.save()
             return redirect(reverse('blog:single',args=(id,)))
 
+#归档视图类
 class ArchieveView(View):
     def get(self,req,year,month):
         # articles=Article.objects.filter(create_time__year=year,create_time__month=month)
@@ -156,4 +169,14 @@ class TagView(View):
         page.path = reverse('blog:tag',args=(id,))
         return render(req,'blog/index.html',{'page':page})
 
-
+class ContactView(View):
+    def get(self,req):
+        return render(req,'blog/contact.html')
+    def post(self,req):
+        email=req.POST.get('email')
+        message=req.POST.get('message')
+        info=MessageInfo()
+        info.email=email
+        info.message=message
+        info.save()
+        return HttpResponse('建议成功')

@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 
 from django.contrib.auth.models import User
+from tinymce.models import HTMLField
 
 
 #标签表
@@ -45,5 +46,21 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+
+class Ads(models.Model):
+    pic=models.ImageField(upload_to='ads')
+    desc=models.CharField(max_length=20)
+    url=models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.desc
+
+
+class MessageInfo(models.Model):
+    email=models.EmailField()
+    info=HTMLField()
+
+    def __str__(self):
+        return self.email
 
 

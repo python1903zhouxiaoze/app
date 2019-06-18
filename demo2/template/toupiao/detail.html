@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+<div class="container">
+    <h2>投票情况</h2>
+    {% for people in  question.choice_set.all %}
+    <ul>
+        <li>{{people.name}}--{{people.number}}</li>
+    </ul>
+    {% endfor %}
+    <a href="{% url 'toupiao:list' question.id %}">返回列表页</a>
+</div>
+</body>
+</html>
