@@ -3,6 +3,9 @@ from django.conf.urls import url
 from .feed import ArticleFeed
 from haystack.views import SearchView
 
+from django.views import static
+from django.conf import settings
+
 app_name='blog'
 
 urlpatterns=[
@@ -15,4 +18,7 @@ urlpatterns=[
     url(r'^rss/$',ArticleFeed(),name='rss'),
     url(r'^contact/$',views.ContactView.as_view(),name='contact'),
     url(r'^search/$',SearchView(),name='search'),
+
+    url(r'^static/(?P<path>.*)$', static.serve,
+    {'document_root': settings.STATIC_ROOT}, name='static'),
 ]
