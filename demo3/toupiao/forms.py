@@ -16,7 +16,7 @@ class MyUserLoginForm(forms.ModelForm):
         model=MyUser
         fields=['username','password']
         widgets={'password':forms.PasswordInput}
-        help_texts={'username':''}
+        help_texts={'username':gettext_lazy('')}
 class MyUserRegisterForm(forms.ModelForm):
     class Meta():
         model=MyUser

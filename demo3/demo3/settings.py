@@ -26,8 +26,8 @@ SECRET_KEY = '8idv8e_&o00)wqetx*^!!5v1uf9^o#^^()6runc$*3%)guv@6n'
 # DEBUG = True
 #CommandError: You must set settings.ALLOWED_HOSTS if DEBUG is False.
 
-# DEBUG=True
-DEBUG=False
+DEBUG=True
+# DEBUG=False
 ALLOWED_HOSTS=['*']
 
 
@@ -131,8 +131,18 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT='static'
-STATICFILES_DIRS=[os.path.join(BASE_DIR,'/static/')]
+# STATIC_ROOT='static'
+STATICFILES_DIRS=[os.path.join(BASE_DIR,'static')]
+
+#发送邮件
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True #是否使用TLS安全传输协议(用于在两个通信应用程序之间提供保密性和数据完整性。)
+EMAIL_USE_SSL = False #是否使用SSL加密，qq企业邮箱要求使用
+EMAIL_HOST = 'smtp.163.com' #发送邮件的邮箱 的 SMTP服务器，这里用了163邮箱
+EMAIL_PORT = 25 #发件箱的SMTP服务器端口
+EMAIL_HOST_USER = 'm18339955260@163.com' #发送邮件的邮箱地址
+EMAIL_HOST_PASSWORD = 'money941014'
+DEFAULT_FROM_EMAIL = 'zhou <18339955260@163.com>'
 
 
 

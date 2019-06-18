@@ -1,41 +1,42 @@
 {% extends 'toupiao/base.html' %}
 
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Title</title>-->
-<!--&lt;!&ndash;    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">&ndash;&gt;-->
-<!--&lt;!&ndash;    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>&ndash;&gt;-->
-<!--&lt;!&ndash;    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>&ndash;&gt;-->
-<!--        <link rel="stylesheet" href="/static/main.css">-->
-<!--</head>-->
-<!--<body>-->
-<!--<div class="container">-->
-<!--    <h2>登录</h2>-->
-<!--    <h2>{{errormessage}}</h2>-->
-<!--    <h2>{{errormessage1}}</h2>-->
-<!--    <h2><a href="{% url 'toupiao:register' %}">注册</a></h2>-->
-<!--    <form action="{% url 'toupiao:login' %}" method="post">-->
-<!--        {% csrf_token %}-->
-<!--&lt;!&ndash;        <label for="username">用户名</label>&ndash;&gt;-->
-<!--&lt;!&ndash;        <input type="text" name="username" id="username" placeholder="请输入用户名"><br><br>&ndash;&gt;-->
-<!--&lt;!&ndash;        <label for="passwd">密码</label>&ndash;&gt;-->
-<!--&lt;!&ndash;        <input type="text" name="passwd" id="passwd" placeholder="请输入密码"><br><br>&ndash;&gt;-->
-<!--        {{lf}}-->
-<!--        <input type="submit" value="提交">-->
-<!--    </form>-->
-<!--    <br>-->
-<!--    <br>-->
-<!--    <br>-->
-
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->
 
 {% block link %}
 <link rel="stylesheet" href="/static/main.css">
 {% endblock %}
+
+
+{% block script %}
+<script src="/static/main.js"></script>
+
+<script>
+    $(function(){
+        $("#myimg").click(function(){
+            console.log('111');
+<!--            这里src后面必须是逗号，否则会出错-->
+            $("#myimg").attr('src','/verify/?t='+new Date().getTime())
+        })
+
+
+        $("#id_username").blur(function(){
+            $.ajax({
+                type:'get',
+                url:"/checkusername/?username="+$("#id_username").val(),
+                success:function(data){
+                    console.log(data);
+                    if(data['statecode']==0)
+                    {
+                        $("#errorinfo").text(data['error'])
+                    }
+                }
+            })
+        })
+    })
+
+</script>
+{% endblock %}
+
+
 
 {% block body %}
 <div class="container">
@@ -44,11 +45,17 @@
     <h2>{{errormessage1}}</h2>
     <h2><a href="{% url 'toupiao:register' %}">注册</a></h2>
     <form action="{% url 'toupiao:login' %}" method="post">
+        <p id="errorinfo"></p>
         {% csrf_token %}
         {{lf}}
+
+        <label for="id_verify">验证码</label><img id="myimg" src="{% url 'toupiao:verify' %}" width='100' height='30' alt="">
+        <input type="text" name="id_verify" id="id_verify">
         <input type="submit" value="提交">
     </form>
     <br>
     <br>
     <br>
+</div>
 {% endblock %}
+
