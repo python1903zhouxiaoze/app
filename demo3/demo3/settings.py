@@ -26,8 +26,8 @@ SECRET_KEY = '8idv8e_&o00)wqetx*^!!5v1uf9^o#^^()6runc$*3%)guv@6n'
 # DEBUG = True
 #CommandError: You must set settings.ALLOWED_HOSTS if DEBUG is False.
 
-DEBUG=True
-# DEBUG=False
+# DEBUG=True
+DEBUG=False
 ALLOWED_HOSTS=['*']
 
 
