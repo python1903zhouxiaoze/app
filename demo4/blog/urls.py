@@ -19,6 +19,6 @@ urlpatterns=[
     url(r'^contact/$',views.ContactView.as_view(),name='contact'),
     url(r'^search/$',SearchView(),name='search'),
 
-    url(r'^static/(?P<path>.*)$', static.serve,
-    {'document_root': settings.STATIC_ROOT}, name='static'),
+    # url(r'^static/(?P<path>.*)$', static.serve,
+    # {'document_root': settings.STATIC_ROOT}, name='static'),
 ]
