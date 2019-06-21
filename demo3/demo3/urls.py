@@ -25,6 +25,6 @@ urlpatterns = [
     url('',include('toupiao.urls',namespace='toupiao')),
 
 
-    # url(r'^static/(?P<path>.*)$', static.serve,
-    # {'document_root': settings.STATIC_ROOT}, name='static'),
+    url(r'^static/(?P<path>.*)$', static.serve,
+    {'document_root': settings.STATIC_ROOT}, name='static'),
 ]
